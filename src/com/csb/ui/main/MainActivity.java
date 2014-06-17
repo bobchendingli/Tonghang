@@ -175,7 +175,7 @@ public class MainActivity extends SlidingFragmentActivity implements
 		btn_title_right = (Button) findViewById(R.id.btn_title_right);
 		btn_title_right.setText("");
 		btn_title_right.setBackgroundDrawable(getResources().getDrawable(
-				R.drawable.showright_selector));
+				R.drawable.icon_gerenzhongxin));
 		btn_title_right.setOnClickListener(this);
 
 		btn_title_left = (Button) findViewById(R.id.btn_title_left);

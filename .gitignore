@@ -19,8 +19,3 @@ gen/
 # Local configuration file (sdk path, etc)
 local.properties
 
-# for the IntelliJ IDEA
-*.iml
-.idea/
-/.metadata/
-/AndroidManifest.xml

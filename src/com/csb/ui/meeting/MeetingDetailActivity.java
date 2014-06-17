@@ -125,9 +125,7 @@ public class MeetingDetailActivity extends ListActivity implements
 		btn_title_right.setOnClickListener(this);
 
 		btn_title_left = (Button) findViewById(R.id.btn_title_left);
-		btn_title_left.setText("");
-		btn_title_left.setBackgroundDrawable(context.getResources()
-				.getDrawable(R.drawable.back_selector));
+		btn_title_left.setText("返回");
 		btn_title_left.setOnClickListener(this);
 
 		btn_baoming = (Button) findViewById(R.id.btn_baoming);

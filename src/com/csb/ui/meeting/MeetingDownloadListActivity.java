@@ -203,9 +203,7 @@ public class MeetingDownloadListActivity extends Activity implements
 		tv_top_title = (TextView) findViewById(R.id.tv_top_title);
 		tv_top_title.setText("资料下载");
 		btn_title_left = (Button) findViewById(R.id.btn_title_left);
-		btn_title_left.setBackgroundDrawable(context.getResources()
-				.getDrawable(R.drawable.back_selector));
-		btn_title_left.setText("");
+		btn_title_left.setText("返回");
 		btn_title_left.setOnClickListener(this);
 		btn_title_right = (Button) findViewById(R.id.btn_title_right);
 		btn_title_right.setVisibility(View.INVISIBLE);

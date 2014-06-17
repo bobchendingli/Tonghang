@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.csb"
+    android:versionCode="2"
+    android:versionName="1.2" >
+
+    <uses-sdk android:minSdkVersion="8" />
+    
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <uses-permission android:name="android.permission.CAMERA" >
+    </uses-permission>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" >
+    </uses-permission>
+
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.FLASHLIGHT" />
+    
+    <uses-permission android:name="android.permission.READ_CALENDAR" />
+    <uses-permission android:name="android.permission.WRITE_CALENDAR" />
+
+    <application
+        android:name="com.csb.utils.GlobalContext"
+        android:allowBackup="true"
+        android:icon="@drawable/icon"
+        android:label="@string/app_name"
+        android:largeHeap="true" >
+        <receiver 
+   			android:name="com.csb.broadcastreceiver.TongHangReciever" 
+   			android:enabled="true">
+			<intent-filter>				
+				<action android:name="android.intent.action.AUTO_UPDATE" />
+			</intent-filter>
+		</receiver>
+        <activity
+            android:name="com.csb.ui.login.LoadingActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.FullScreen" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.csb.ui.login.WelcomeActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.NoTitle" >
+        </activity>
+        
+        <activity
+            android:name="com.csb.ui.login.LoginActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.NoTitle" >
+        </activity>
+        
+        <activity
+            android:name="com.csb.ui.login.RegisterActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.NoTitle" >
+        </activity>
+        <activity
+            android:name="com.csb.ui.login.RegisterConfirmActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.NoTitle"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden" >
+        </activity>
+        <activity
+            android:name="com.csb.ui.main.MainActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.NoTitle" >
+        </activity>
+        <activity
+            android:name="com.csb.ui.main.XueYuanDetailActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.NoTitle" >
+        </activity>
+        <activity
+            android:name="com.csb.ui.meeting.MeetingDetailActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.NoTitle" >
+        </activity>
+        <activity
+            android:name="com.csb.qrcode.CaptureActivity"
+            android:screenOrientation="portrait"
+            android:configChanges="orientation|keyboardHidden"
+			android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
+			android:windowSoftInputMode="stateAlwaysHidden" >
+        </activity>
+        <activity
+            android:name="com.csb.ui.meeting.MeetingDownloadListActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.NoTitle" >
+        </activity>
+        <activity
+            android:name="com.csb.ui.meeting.MeetingDownloadDetailActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.NoTitle" >
+        </activity>
+        <activity
+            android:name="com.csb.ui.meeting.SurveyActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.NoTitle" >
+        </activity>
+        <activity
+            android:name="com.csb.ui.setting.SettingsActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.NoTitle" >
+        </activity>
+        <activity
+            android:name="com.csb.ui.setting.AboutActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.NoTitle" >
+        </activity>
+        <activity
+            android:name="com.csb.ui.setting.MyInfoActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.NoTitle"
+            android:windowSoftInputMode="stateAlwaysHidden" >
+        </activity>
+    </application>
+
+</manifest>
