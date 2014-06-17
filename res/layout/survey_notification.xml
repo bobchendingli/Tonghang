@@ -1,0 +1,38 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:padding="18dip"
+    android:orientation="vertical" >
+
+        <Button
+            android:id="@+id/btShowSurvey"
+            android:layout_width="150dip"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="show survey"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/btCancelSurvey"
+            android:layout_width="150dip"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/btShowSurvey"
+            android:layout_alignRight="@id/btShowSurvey"
+            android:layout_alignLeft="@id/btShowSurvey"
+            android:text="cancel survey"
+            android:textSize="20sp" />
+         <Button
+            android:id="@+id/btCloseDialog"
+            android:layout_width="150dip"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/btCancelSurvey"
+            android:layout_alignRight="@id/btCancelSurvey"
+            android:layout_alignLeft="@id/btCancelSurvey"
+            android:text="close dialog"
+            android:textSize="20sp" />
+
+         
+
+</RelativeLayout>

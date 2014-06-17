@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/white"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/rlTopBar"
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:background="@drawable/bar_top">
+
+        <ImageView
+            android:id="@+id/ivBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="3dip"
+            android:src="@drawable/back_selector" />
+
+        <ProgressBar
+            android:id="@+id/pbProgress"
+            android:layout_width="40dip"
+            android:layout_height="40dip"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="3dip"
+            android:indeterminateDrawable="@drawable/progress_indeterminate_rotation"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/ivCancel"
+            android:layout_width="40sp"
+            android:layout_height="40sp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="3dip"
+            android:src="@drawable/ic_cancel" 
+            android:visibility="invisible"/>
+        
+        <TextView
+            android:id="@+id/survey_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_centerVertical="true"
+            android:ellipsize="marquee"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:scrollHorizontally="true"
+            android:singleLine="true"
+            android:gravity="center"
+            android:text="调查问卷"
+            android:textColor="@android:color/white"
+            android:textSize="19sp" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/survey_question"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5sp"
+        android:textColor="@android:color/background_dark"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/survey_label"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5sp"
+        android:textColor="@android:color/background_dark"
+        android:textSize="12sp"
+        android:visibility="gone" />
+
+    <ListView
+        android:id="@+id/radio_answers"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dip"
+        android:cacheColorHint="@android:color/transparent"
+        android:divider="@drawable/prefresh_list_cutline"
+        android:scrollbarFadeDuration="0"/>
+    
+    <Button
+        android:id="@+id/skip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:layout_marginRight="5sp"
+        android:text="skip"
+        android:textSize="10sp"
+        android:visibility="gone"/>
+
+</LinearLayout>

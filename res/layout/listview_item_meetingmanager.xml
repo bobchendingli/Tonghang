@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:background="#ffffff"
+    android:descendantFocusability="blocksDescendants">
+    <LinearLayout
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:gravity="center_horizontal"
+	    android:orientation="vertical"
+	    android:layout_weight="1" 
+	    android:background="#ffffff"
+	    android:layout_margin="5dp">
+		<TextView
+	        android:id="@+id/item_date_tv"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_marginLeft="10dp"
+	        android:text="TextView" 
+	        android:textSize="14.0sp"
+	        android:textColor="@color/black"/>
+	    <TextView
+	        android:id="@+id/item_title_tv"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_marginLeft="10dp"
+	        android:layout_marginRight="5dp"
+	        android:textSize="17.0sp"
+	        android:textColor="@color/black"
+	        android:autoText="true"
+	        android:text="TextViewTextViewTextViewTextVi" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/item_status_tv"
+        android:layout_width="86dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:text="已接受邀请"
+        android:textSize="15.0sp"
+        android:layout_margin="5dp" />
+</LinearLayout>

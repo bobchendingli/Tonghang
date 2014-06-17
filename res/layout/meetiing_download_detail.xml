@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#e8f0f0"
+    android:orientation="vertical" >
+    <include layout="@layout/title_bar" />
+    <ScrollView
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:fillViewport="true" >
+	    <LinearLayout
+	        android:layout_width="match_parent"
+	        android:layout_height="match_parent"
+	        android:gravity="center"
+	        android:orientation="vertical" >
+	        <TextView 
+	            android:id="@+id/textTv"
+	            android:paddingTop="10dp"
+	            android:paddingLeft="5dp"
+	            android:paddingRight="5dp"
+	            android:paddingBottom="5dp"
+	            android:textColor="@color/black"
+	            android:layout_width="match_parent"
+	        	android:layout_height="match_parent"/>
+	        
+	         <uk.co.senab.photoview.PhotoView
+		        android:id="@+id/picIv"
+		        android:layout_width="match_parent"
+		        android:layout_height="match_parent"
+		        android:layout_gravity="center"
+		        android:adjustViewBounds="false"
+		        />
+	         <!-- 
+	        <ImageView 
+	            android:id="@+id/picIv"
+	            android:padding="5dp"
+	            android:layout_width="wrap_content"
+	        	android:layout_height="wrap_content"
+	        	android:visibility="gone"/> -->
+	        <WebView
+	            android:id="@+id/webView"
+	            android:layout_width="match_parent"
+	            android:layout_height="match_parent" 
+	            android:visibility="gone"/>
+	    </LinearLayout>
+	</ScrollView>
+</LinearLayout>

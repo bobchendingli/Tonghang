@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_grey"
+    android:orientation="vertical" >
+	<include layout="@layout/title_bar" />
+    <ImageView
+        android:id="@+id/image_logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="100dp"
+        android:src="@drawable/login_img_icon" />
+<!-- 
+    <Button
+        android:id="@+id/btn_response"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/btn_update"
+        android:layout_alignBottom="@+id/btn_update"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="50dp"
+        android:background="@drawable/login_button_select"
+        android:text="意见反馈"
+        android:textColor="@color/white"
+        android:visibility="gone"
+        android:textSize="18sp" /> -->
+
+    <TextView
+        android:id="@+id/tv_copyright"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="25dp"
+        android:gravity="center"
+        android:text="同行网V1.2版本" />
+<!-- android:text="Copyright#2014.tonghangwang.com.inc \nAll Right Reserved" -->
+
+    <Button
+        android:id="@+id/btn_response"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/image_logo"
+        android:layout_marginLeft="50dp"
+        android:background="@drawable/login_button_select"
+        android:text="意见反馈"
+        android:textColor="@color/white"
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/btn_update"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/image_logo"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="50dp"
+        android:background="@drawable/login_button_select"
+        android:text="版本更新"
+        android:textColor="@color/white"
+        android:textSize="18sp" />
+
+</RelativeLayout>

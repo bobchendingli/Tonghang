@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/tools_box_bg"
+    android:scrollbars="none" > -->
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/llRoot"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" 
+        android:background="@color/tools_box_bg">
+        
+        <LinearLayout
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_gravity="center_vertical"
+	        android:orientation="horizontal" >
+			<ImageView  
+			    android:id="@+id/iv_head"
+	            android:layout_width="50dip"
+	            android:layout_height="50dip"
+	            android:layout_gravity="center_horizontal"
+	            android:padding="5dp"
+	            android:layout_marginLeft="8dp"
+	            android:adjustViewBounds="true"
+	            android:contentDescription="@null"
+	            android:maxHeight="80dip"
+	            android:maxWidth="80dip"
+	            android:background="@drawable/imageviewboundshape"
+	            android:src="@drawable/img_head"   />
+			<LinearLayout
+		        android:id="@+id/ll_myinfo"
+		        android:layout_width="fill_parent"
+		        android:layout_height="fill_parent"
+		        android:gravity="center_vertical"
+		        android:orientation="vertical" >
+		        <TextView
+		            android:id="@+id/nameTextView"
+		            android:layout_width="fill_parent"
+		            android:layout_height="wrap_content"
+		            android:text="Bob.chen"
+		            android:padding="3dp"
+		            android:textColor="#ffccccc6"
+		            android:textSize="12sp" />
+				<TextView
+		            android:id="@+id/emailTextView"
+		            android:layout_width="fill_parent"
+		            android:layout_height="wrap_content"
+		            android:padding="3dp"
+		            android:text="37991927@qq.com"
+		            android:textColor="#ffccccc6"
+		            android:textSize="12sp" />
+		    </LinearLayout>
+        </LinearLayout>
+       
+		<!-- 我的信息 -->
+        <include
+            android:visibility="gone"
+            android:id="@+id/myInfoBtnLayout"
+            layout="@layout/menu_item_myinfo" />
+
+        <include
+            android:visibility="gone"
+            android:id="@+id/myPublishBtnLayout"
+            layout="@layout/menu_item_mypublish" />
+        
+        <include
+            android:id="@+id/myCalendarBtnLayout"
+            layout="@layout/menu_item_mycalendar" />
+		<include
+		    android:visibility="gone"
+            android:id="@+id/myBrowserBtnLayout"
+            layout="@layout/menu_item_mybrowser" />
+        <include
+            android:visibility="gone"
+            android:id="@+id/myFavBtnLayout"
+            layout="@layout/menu_item_myfav" />
+		<include
+		    android:visibility="gone"
+            android:id="@+id/addressBookBtnLayout"
+            layout="@layout/menu_item_addressbook" />
+        <include
+            android:id="@+id/settingBtnLayout"
+            layout="@layout/menu_item_setting" />
+        
+       <View
+            android:layout_width="fill_parent"
+            android:layout_height="1.3299866dip"
+            android:background="#ff1c1c1b" />
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1.0px"
+            android:background="#ff474745" />
+		<LinearLayout
+	        android:layout_width="fill_parent"
+	        android:layout_height="fill_parent"
+	        android:layout_gravity="center_horizontal"
+	        android:gravity="center_horizontal"
+	        android:orientation="horizontal" >
+        <TextView
+            android:id="@+id/btn_logout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/bt_logout_select"
+            android:gravity="center"
+            android:text="退出登录"
+            android:textColor="#000000"
+            android:textSize="@dimen/menu_item_textsize" />
+        </LinearLayout>
+    </LinearLayout>
+
+<!-- </ScrollView> -->

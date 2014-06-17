@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#e8f0f0"
+    android:orientation="vertical" >
+
+    <include layout="@layout/title_bar" />
+
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0dip"
+        android:layout_weight="1.0" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:orientation="vertical"
+                android:layout_weight="1" >
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:gravity="center"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:id="@+id/tv_meeting_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textColor="#000000"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <!-- <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="@drawable/horizontal_line" /> -->
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/input"
+                    android:orientation="vertical" >
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/meeting_details_margin"
+                        android:orientation="horizontal" >
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="时    间:"
+                            android:textColor="#000000"
+                            android:textSize="@dimen/meeting_details_textsize" />
+
+                        <TextView
+                            android:id="@+id/tv_meeting_time"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:text=" "
+                            android:textColor="#505050"
+                            android:textSize="@dimen/meeting_details_textsize" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="fill_parent"
+                        android:layout_height="1dp"
+                        android:background="@drawable/prefresh_list_cutline" />
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/meeting_details_margin"
+                        android:orientation="horizontal" >
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="地    点:"
+                            android:textColor="#000000"
+                            android:textSize="@dimen/meeting_details_textsize" />
+
+                        <TextView
+                            android:id="@+id/tv_meeting_address"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:text=""
+                            android:textColor="#505050"
+                            android:textSize="@dimen/meeting_details_textsize" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="fill_parent"
+                        android:layout_height="1dp"
+                        android:background="@drawable/prefresh_list_cutline" />
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/meeting_details_margin"
+                        android:orientation="horizontal" >
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="主持人:"
+                            android:textColor="#000000"
+                            android:textSize="@dimen/meeting_details_textsize" />
+
+                        <TextView
+                            android:id="@+id/tv_meeting_spaker"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:text=""
+                            android:textColor="#505050"
+                            android:textSize="@dimen/meeting_details_textsize" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="fill_parent"
+                        android:layout_height="1dp"
+                        android:background="@drawable/prefresh_list_cutline" />
+					
+                    <ScrollView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:fillViewport="true" >
+
+                        <LinearLayout
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:layout_margin="@dimen/meeting_details_margin"
+                            android:orientation="horizontal"
+                            android:padding="5dp" >
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="详    情:"
+                                android:textColor="#000000"
+                                android:textSize="@dimen/meeting_details_textsize" />
+
+                            <TextView
+                                android:id="@+id/tv_meeting_arrangement"
+                                android:layout_width="fill_parent"
+                                android:layout_height="wrap_content"
+                                android:padding="5dp"
+                                android:text=""
+                                android:textColor="#505050"
+                                android:textSize="14sp" />
+                        </LinearLayout>
+                    </ScrollView>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="200dp"
+                android:layout_weight="0"
+                android:orientation="vertical" >
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="35dp"
+                    android:gravity="center"
+                    android:orientation="horizontal" >
+
+                    <Button
+                        android:id="@+id/btn_baoming"
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:layout_weight="0.5"
+                        android:background="@drawable/bt_baoming_select"
+                        android:drawableLeft="@drawable/icon_baoming"
+                        android:paddingLeft="20dp"
+                        android:text="报名"
+                        android:textColor="@color/white"
+                        android:textSize="15sp" />
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/vertical_line_white" />
+
+                    <Button
+                        android:id="@+id/btn_qiandao"
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:layout_weight="0.5"
+                        android:background="@drawable/bt_baoming_select"
+                        android:drawableLeft="@drawable/icon_qiandao"
+                        android:paddingLeft="20dp"
+                        android:text="签到"
+                        android:textColor="@color/white"
+                        android:textSize="15sp" />
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/btn_question"
+                    android:layout_width="120dp"
+                    android:layout_height="35dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@drawable/bt_blue_select"
+                    android:drawableLeft="@drawable/icon_woyaotiwen"
+                    android:paddingLeft="10dp"
+                    android:text="我要提问"
+                    android:textColor="@color/white"
+                    android:textSize="15sp" />
+                
+				<ListView android:id="@android:id/list"
+		            android:layout_width="match_parent" 
+		            android:layout_height="match_parent"
+		            android:fadingEdge="none"
+			        android:divider="@drawable/prefresh_list_cutline"
+		            android:drawSelectorOnTop="false"/>
+                <!-- <TextView
+                    android:id="@+id/tv_meeting_question"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/bg_tiwen"
+                    android:gravity="top|left"
+                    android:text=""
+                    android:textSize="15sp" /> -->
+            </LinearLayout>
+        </LinearLayout>
+    </FrameLayout>
+
+</LinearLayout>

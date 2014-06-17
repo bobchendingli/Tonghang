@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_grey"
+    android:orientation="vertical" >
+	<include layout="@layout/title_bar" />
+    <LinearLayout
+        android:id="@+id/linearLayout01"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/login_input"
+        android:orientation="vertical" >
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="left|center_vertical"
+            android:orientation="horizontal" 
+            android:paddingRight="10dp">
+
+            <TextView
+                android:id="@+id/tv_voice"
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:gravity="left|center_vertical"
+                android:paddingLeft="20dp"
+                android:text="声音"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+
+           	<com.csb.ui.view.switchbutton.SwitchButton
+           	    android:id="@+id/cb_voice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+           	    />
+        </LinearLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="1dp"
+            android:layout_marginRight="1dp"
+            android:background="@drawable/divider_horizontal_line" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="left|center_vertical"
+            android:orientation="horizontal" 
+            android:paddingRight="10dp">
+
+            <TextView
+                android:id="@+id/tv_vibration"
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:gravity="left|center_vertical"
+                android:paddingLeft="20dp"
+                android:text="振动"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+            <com.csb.ui.view.switchbutton.SwitchButton
+           	    android:id="@+id/cb_vibration"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+           	    />
+        </LinearLayout>
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="1dp"
+            android:layout_marginRight="1dp"
+            android:background="@drawable/divider_horizontal_line" />
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="left|center_vertical"
+            android:orientation="horizontal" 
+            android:paddingRight="10dp">
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:gravity="left|center_vertical"
+                android:paddingLeft="20dp"
+                android:text="2G/3G课件下载提醒"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+			<com.csb.ui.view.switchbutton.SwitchButton
+           	    android:id="@+id/cb_23g_voice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+           	    />
+        </LinearLayout>
+    </LinearLayout>
+	
+    <LinearLayout
+        android:id="@+id/ll_share"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:gravity="center_vertical"
+        android:background="@drawable/login_input"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/tv_vibration"
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:gravity="left|center_vertical"
+            android:paddingLeft="20dp"
+            android:text="分享"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+        <ImageView
+            android:id="@+id/iv_about"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:layout_marginRight="30dp"
+            android:src="@drawable/group_fold_arrow" />
+    </LinearLayout>
+    
+    <LinearLayout
+        android:id="@+id/ll_about"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:gravity="center_vertical"
+        android:background="@drawable/login_input"
+        android:orientation="horizontal" >
+        <TextView
+            android:id="@+id/tv_vibration"
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:gravity="left|center_vertical"
+            android:paddingLeft="20dp"
+            android:text="关于"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+
+        <ImageView
+            android:id="@+id/iv_about"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:layout_marginRight="30dp"
+            android:src="@drawable/group_fold_arrow" />
+    </LinearLayout>
+</LinearLayout>

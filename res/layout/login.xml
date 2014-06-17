@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_grey"
+    android:orientation="vertical" >
+
+    <ImageView
+        android:id="@+id/image_logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="20dp"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/login_img_icon" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout01"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/image_logo"
+        android:layout_marginLeft="42dp"
+        android:layout_marginRight="42dp"
+        android:background="@drawable/login_input"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="left|center_vertical">
+			<ImageView 
+			    android:layout_marginLeft="10dp"
+			    android:layout_width="wrap_content"
+          		android:layout_height="wrap_content"
+          		android:src="@drawable/icon_mail"/>
+
+			<!-- <TextView
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:layout_marginLeft="5dp"
+			    android:text="邮    箱:"
+			    android:textSize="16sp" /> -->
+
+            <EditText
+                android:id="@+id/et_mail"
+                android:layout_width="fill_parent"
+                android:layout_height="40dp"
+                android:background="#00ffffff"
+                android:hint="邮箱"
+                android:inputType="textEmailAddress"
+                android:paddingLeft="10dp" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="1dp"
+            android:layout_marginRight="1dp"
+            android:background="@drawable/divider_horizontal_line" />
+		<LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="left|center_vertical">
+			<ImageView 
+			    android:layout_marginLeft="10dp"
+			    android:layout_width="wrap_content"
+          		android:layout_height="wrap_content"
+          		android:src="@drawable/icon_key"/>
+			<!-- <TextView
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:layout_marginLeft="5dp"
+			    android:text="密    码:"
+			    android:textSize="16sp" />-->
+	        <EditText
+	            android:id="@+id/et_password"
+	            android:layout_width="fill_parent"
+	            android:layout_height="40dp"
+	            android:background="#00ffffff"
+	            android:hint="密码"
+	            android:inputType="textPassword"
+	            android:paddingLeft="10dp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_register"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/linearLayout01"
+        android:layout_marginLeft="42dp"
+        android:layout_marginRight="42dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/login_button_select"
+        android:text="注册"
+        android:textColor="@color/white"
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/btn_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/btn_register"
+        android:layout_alignBottom="@+id/btn_register"
+        android:layout_alignRight="@+id/linearLayout01"
+        android:background="@drawable/login_button_select"
+        android:text="登录"
+        android:textColor="@color/white"
+        android:textSize="18sp" />
+
+</RelativeLayout>

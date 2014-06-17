@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:listViewAttr="http://schemas.android.com/apk/res/com.csb"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="top"
+    android:background="@color/white" 
+    android:orientation="vertical" 
+    android:layout_marginTop="@dimen/tab_item_height">
+	<com.csb.ui.view.dropdownlist.DropDownListView
+	        android:id="@+id/list_view_meeting"
+	        android:layout_width="match_parent"
+	        android:layout_height="match_parent"
+	        android:drawSelectorOnTop="false"
+	        android:fadingEdge="none"
+	        android:divider="@drawable/prefresh_list_cutline"
+	        listViewAttr:isAutoLoadOnBottom="true"
+	        listViewAttr:isDropDownStyle="false"
+	        listViewAttr:isOnBottomStyle="false"/>
+</LinearLayout>

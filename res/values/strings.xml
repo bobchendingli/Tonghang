@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">同行网</string>
+    <string name="drop_down_list_header_default_text">点击可以刷新</string>
+    <string name="drop_down_list_header_pull_text">下拉可以刷新</string>
+    <string name="drop_down_list_header_release_text">松开可以刷新</string>
+    <string name="drop_down_list_header_loading_text">加载中&#8230;</string>
+    <string name="drop_down_list_footer_default_text">更多</string>
+    <string name="drop_down_list_footer_loading_text">加载中&#8230;</string>
+    <string name="drop_down_list_footer_no_more_text">没有更多了</string>
+    <string name="update_at">更新于:&#160;</string>
+    <string name="drop_down_tip">下拉刷新或滚动到底部加载更多</string>
+    <string name="cancel">取消</string>
+    <string name="confirm">确定</string>
+    <string name="ok">确定</string>
+    <string name="timeout">网络有问题，连不上</string>
+    <string name="unknown_error_error_code">未知错误，错误代码</string>
+    <string name="unknown_sina_network_error">网络节点又出故障，换个网络试试</string>
+    <string name="sd_card_in_not_mounted">SD卡未挂载</string>
+    <string name="something_error">发生故障</string>
+    <string name="please_deleted_cache_dir">权限出错，无法读取存储空间，需要用户手动删除SD卡下的
+        /Android/data/org.qii.weiciyuan 目录
+    </string>
+    <string name="wj">
+    <![CDATA[
+        {
+	"respCode":"0000",
+	"respMsg":"会议问卷获得成功",
+    "questionnaire_type":"0",
+	"question_content":[
+             {
+                   "question_id":"1",
+                   "question_content":"aaaaa1",
+                   "question_selection":[
+                      "1xxxx",
+                      "2xxxx",
+                      "3xxxx中顺"
+                  ]
+             },
+             {
+                   "question_id":"2",
+                   "question_content":"aaaaa您手机发送验证您手机发送验证您手机发送验证您手机发送验证您手机发送验证您手机发送验证您手机发送验证您手机发送验证您手机发送验证您手机发送验证您手机发送验证您手机发送验证您手机发送验证您手机发送验证",
+                   "question_selection":[
+                      "4xxxx",
+                      "5xxxx",
+                      "6xxxx"
+                  ]
+             }
+        ]
+}
+	]]>
+    </string>
+    
+    <string name="request_sms_successfully">已经向您手机发送验证码，请查看!</string>
+    <string name="register_successfully">用户注册成功!</string>
+    <string name="login_successfully">用户登录成功!</string>
+    <string name="updateuser_successfully">修改信息成功!</string>
+    <string name="updatequestion_successfully">更新提问成功!</string>
+    <string name="updatequestionnaire_successfully">问卷提交成功!</string>
+    <string name="updatefeedback_successfully">更新意见反馈成功!</string>
+    <string name="updatestatus_successfully">更新会议状态成功!</string>
+    <string name="getmeetinglist_successfully">获取会议列表信息成功!</string>
+    
+    <string name="update_waiting">请等待...</string>
+    <string name="update_version">版本升级</string>
+    <string name="update_content">1.增加版本自动升级功能.\n2.修改订阅号学院介绍</string>
+    <string name="update_description">发现有新的版本，是否升级？</string>
+    <string name="update_modified">更新内容：</string>
+    <string name="update_upgrade">升级</string>
+    <string name="update_failure">更新新版本失败！</string>
+    <string name="update_download_failure">下载新版本失败！</string>
+    <string name="update_install_failure">安装新版本失败！</string>
+    <string name="update_is_neweast">当前版本是最新版本！</string>
+    <string name="update_downloading_version">下载更新...</string>
+    <string name="version_update">版本更新</string>
+    <string name="version_latest">已是最新版本</string>
+    <string name="autoupdate_url_notavailable">自动更新版本配置异常.</string>
+	<string name="updateversion_notification">点击进入同行网版本更新页面</string>
+	<string name="sdcardisnotavailable">手机无sd卡，升级请插入sd卡.</string>
+</resources>
