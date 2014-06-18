@@ -64,7 +64,7 @@
     
     <string name="update_waiting">请等待...</string>
     <string name="update_version">版本升级</string>
-    <string name="update_content">1.增加版本自动升级功能.\n2.修改订阅号学院介绍</string>
+    <string name="update_content">1.切换接口地址.\n2.标题栏图标适配显示.\n3.无网络情况，logo不显示\n4.扫描二维码，提示应该竖屏显示</string>
     <string name="update_description">发现有新的版本，是否升级？</string>
     <string name="update_modified">更新内容：</string>
     <string name="update_upgrade">升级</string>

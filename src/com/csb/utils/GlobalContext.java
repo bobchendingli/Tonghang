@@ -65,7 +65,7 @@ public final class GlobalContext extends Application {
 	public static final String DEFAULT_CACHE_FOLDER     = new StringBuilder()
 																.append(Environment.getExternalStorageDirectory()
 																        .getAbsolutePath()).append(File.separator)
-																.append("Tonghang").append(File.separator)
+																.append("tonghang").append(File.separator)
 																.append("ImageCache").toString();
 	
 
@@ -73,17 +73,18 @@ public final class GlobalContext extends Application {
 	public void onCreate() {
 		super.onCreate();
 		globalContext = this;
-//		buildCache();
 		
 		IMAGE_CACHE.initData(this, TAG_CACHE);
         IMAGE_CACHE.setContext(this);
         IMAGE_CACHE.setCacheFolder(DEFAULT_CACHE_FOLDER);
 	}
 	
-	
-
 	public static GlobalContext getInstance() {
 		return globalContext;
+	}
+	
+	public void saveImgDataToDb() {
+		IMAGE_CACHE.saveDataToDb(globalContext, TAG_CACHE);
 	}
 
 	public Handler getUIHandler() {

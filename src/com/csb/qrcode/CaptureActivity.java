@@ -172,27 +172,35 @@ public class CaptureActivity extends Activity implements Callback {
 			dialog.setIcon(drawable);
 		}
 //		obj.getText();
-		dialog.setTitle("");
-		dialog.setMessage("会议信息匹配成功, 确定签到?");
-		dialog.setNegativeButton("确定", new DialogInterface.OnClickListener() {
-			@Override
-			public void onClick(DialogInterface dialog, int which) {
-//				Intent intent = new Intent();
-//				intent.setAction("android.intent.action.VIEW");
-//				Uri content_url = Uri.parse(obj.getText());
-//				intent.setData(content_url);
-//				startActivity(intent);
-				setResult(RESULT_OK);
-				finish();
-			}
-		});
-		dialog.setPositiveButton("取消", new DialogInterface.OnClickListener() {
-			@Override
-			public void onClick(DialogInterface dialog, int which) {
-				finish();
-			}
-		});
-		dialog.create().show();
+		if(meetingItemBean.getMeeting_id().equals(obj.getText())){
+			dialog.setTitle("");
+			dialog.setMessage("会议信息匹配成功, 确定签到?");
+			dialog.setNegativeButton("确定", new DialogInterface.OnClickListener() {
+				@Override
+				public void onClick(DialogInterface dialog, int which) {
+					setResult(RESULT_OK);
+					finish();
+				}
+			});
+			dialog.setPositiveButton("取消", new DialogInterface.OnClickListener() {
+				@Override
+				public void onClick(DialogInterface dialog, int which) {
+					finish();
+				}
+			});
+			dialog.create().show();
+		} else {
+			dialog.setTitle("");
+			dialog.setMessage("会议信息匹配不成功！");
+			dialog.setNegativeButton("确定", new DialogInterface.OnClickListener() {
+				@Override
+				public void onClick(DialogInterface dialog, int which) {
+					finish();
+				}
+			});
+			dialog.create().show();
+		}
+		
 	}
 
 	private void initBeepSound() {

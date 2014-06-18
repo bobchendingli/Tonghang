@@ -83,7 +83,7 @@ public class MyInfoActivity extends Activity implements OnClickListener {
 		context = this;
 		initView();
 	}
-
+	
 	private void showChooseDialog(final int type) {
 		final String[] items = new String[] { "拍照", "文件" };
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
@@ -309,6 +309,7 @@ public class MyInfoActivity extends Activity implements OnClickListener {
 	protected void onDestroy() {
 		super.onDestroy();
 		Utility.cancelTasks(updateUserAsyncTask);
+		GlobalContext.getInstance().saveImgDataToDb();
 	}
 
 	private void doUpdateUser() {

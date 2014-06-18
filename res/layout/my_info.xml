@@ -37,7 +37,7 @@
 
                 <EditText
                     android:id="@+id/tv_username"
-                    android:layout_width="100dp"
+                    android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
                     android:gravity="center"
                     android:text=""

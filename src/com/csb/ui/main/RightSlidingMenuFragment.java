@@ -106,6 +106,29 @@ public class RightSlidingMenuFragment extends Fragment implements
 		initView(view);
 		return view;
 	}
+	
+	@Override
+	public void onStart() {
+		super.onStart();
+		if (GlobalContext.getInstance().getUserBean() != null
+				&& !TextUtils.isEmpty(GlobalContext.getInstance().getUserBean()
+						.getImageurl())) {
+			GlobalContext.IMAGE_CACHE.get(URLHelper.URL_SERVER_UPLOAD
+					+ GlobalContext.getInstance().getUserBean().getImageurl(),
+					headImageView);
+		}
+	}
+	
+	@Override
+	public void onStop() {
+		super.onStop();
+		GlobalContext.getInstance().saveImgDataToDb();
+	}
+	
+	@Override
+	public void onDestroyView() {
+		super.onDestroyView();
+	}
 
 	private void showChooseDialog() {
 		final String[] items = new String[] { "拍照", "文件" };
@@ -161,21 +184,9 @@ public class RightSlidingMenuFragment extends Fragment implements
 		headImageView.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-//				Intent i = new Intent(
-//						Intent.ACTION_PICK,
-//						android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-//				startActivityForResult(i, RESULT_LOAD_IMAGE);
 				showChooseDialog();
 			}
 		});
-
-		if (GlobalContext.getInstance().getUserBean() != null
-				&& !TextUtils.isEmpty(GlobalContext.getInstance().getUserBean()
-						.getImageurl())) {
-			GlobalContext.IMAGE_CACHE.get(URLHelper.URL_SERVER_UPLOAD
-					+ GlobalContext.getInstance().getUserBean().getImageurl(),
-					headImageView);
-		}
 
 		nameTextView = (TextView) view.findViewById(R.id.nameTextView);
 		emailTextView = (TextView) view.findViewById(R.id.emailTextView);
@@ -435,4 +446,6 @@ public class RightSlidingMenuFragment extends Fragment implements
 		GlobalContext.getInstance().setUserBean(userBean);
 		ToastUtils.show(context, "图片上传成功!");
 	}
+	
+	
 }
