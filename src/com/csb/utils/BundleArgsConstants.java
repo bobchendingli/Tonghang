@@ -12,6 +12,8 @@ public class BundleArgsConstants {
      * new message broadcast arg
      */
     public static final String USERBEAN_EXTRA = "userbean_extra";
+    public static final String XUESHU_EXTRA = "xueshu_extra";
+    public static final String XINGQUEDIAN_EXTRA = "xingquedian_extra";
     public static final String MEETING_EXTRA = "meeting_extra";
     public static final String SURVEY_TYPE = "survey_type_extra";
     public static final String FILEBEAN_EXTRA = "filebean_extra";
@@ -27,4 +29,5 @@ public class BundleArgsConstants {
     public static final int UPLOAD_CODE_PIC_SUCC = 6;
     public static final int UPDATEQUESTIONNAIRE_SUCC = 7;
     public static final int IS_NOT_DOWNLOADFILE = 8;
+    public static final int REGISTER_START = 9;
 }

@@ -30,7 +30,7 @@ public class UserBean implements Parcelable {
 	private String userid;
 	private String username;
 	private String gender;
-	private String birthday;
+	private String age;
 	private String code;
 	private String hospital;
 	private String departments;
@@ -42,7 +42,43 @@ public class UserBean implements Parcelable {
 	private String licenseimgurl;
 	private String password;
 	private String verificationno;
+	private String degree;
+	private String planning;
+	private String interest;
+	private String passwordCofirm;
 	
+	public void setPasswordCofirm(String passwordCofirm) {
+		this.passwordCofirm = passwordCofirm;
+	}
+	
+	public String getPasswordCofirm() {
+		return passwordCofirm;
+	}
+	
+	public String getDegree() {
+		return degree;
+	}
+
+	public void setDegree(String degree) {
+		this.degree = degree;
+	}
+
+	public String getPlanning() {
+		return planning;
+	}
+
+	public void setPlanning(String planning) {
+		this.planning = planning;
+	}
+
+	public String getInterest() {
+		return interest;
+	}
+
+	public void setInterest(String interest) {
+		this.interest = interest;
+	}
+
 	public void setLicenseimgurl(String licenseimgurl) {
 		this.licenseimgurl = licenseimgurl;
 	}
@@ -107,13 +143,6 @@ public class UserBean implements Parcelable {
 		this.gender = gender;
 	}
 
-	public String getBirthday() {
-		return birthday;
-	}
-
-	public void setBirthday(String birthday) {
-		this.birthday = birthday;
-	}
 
 	public String getCode() {
 		return code;
@@ -191,7 +220,7 @@ public class UserBean implements Parcelable {
 		dest.writeString(userid);
 		dest.writeString(username);
 		dest.writeString(gender);
-		dest.writeString(birthday);
+		dest.writeString(age);
 		dest.writeString(code);
 		dest.writeString(hospital);
 		dest.writeString(departments);
@@ -203,6 +232,10 @@ public class UserBean implements Parcelable {
 		dest.writeString(password);
 		dest.writeString(verificationno);
 		dest.writeString(licenseimgurl);
+		dest.writeString(degree);
+		dest.writeString(planning);
+		dest.writeString(interest);
+		dest.writeString(passwordCofirm);
 	}
 
 	public static final Parcelable.Creator<UserBean> CREATOR = new Parcelable.Creator<UserBean>() {
@@ -213,7 +246,7 @@ public class UserBean implements Parcelable {
 			bean.userid = in.readString();
 			bean.username = in.readString();
 			bean.gender = in.readString();
-			bean.birthday = in.readString();
+			bean.age = in.readString();
 			bean.code = in.readString();
 			bean.hospital = in.readString();
 			bean.departments = in.readString();
@@ -225,6 +258,10 @@ public class UserBean implements Parcelable {
 			bean.password = in.readString();
 			bean.verificationno = in.readString();
 			bean.licenseimgurl = in.readString();
+			bean.degree = in.readString();
+			bean.planning = in.readString();
+			bean.interest = in.readString();
+			bean.passwordCofirm = in.readString();
 			return bean;
 		}
 
@@ -242,14 +279,12 @@ public class UserBean implements Parcelable {
 		return getUserid().hashCode();
 	}
 
-	@Override
-	public String toString() {
-		return "UserBean [respCode=" + respCode + ", respMsg=" + respMsg
-				+ ", userid=" + userid + ", username=" + username + ", gender="
-				+ gender + ", birthday=" + birthday + ", code=" + code
-				+ ", hospital=" + hospital + ", departments=" + departments
-				+ ", post=" + post + ", region=" + region + ", phone=" + phone
-				+ ", mail=" + mail + ", imageurl=" + imageurl+ ", password=" + password + ", verificationno=" + verificationno + ", licenseimgurl=" + licenseimgurl + "]";
+	public String getAge() {
+		return age;
+	}
+
+	public void setAge(String age) {
+		this.age = age;
 	}
 	
 	

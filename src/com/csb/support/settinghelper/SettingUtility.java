@@ -54,8 +54,7 @@ public class SettingUtility {
 		SettingHelper.setEditor(getContext(), "username",
 				userBean.getUsername());
 		SettingHelper.setEditor(getContext(), "gender", userBean.getGender());
-		SettingHelper.setEditor(getContext(), "birthday",
-				userBean.getBirthday());
+		SettingHelper.setEditor(getContext(), "age", userBean.getAge());
 		SettingHelper.setEditor(getContext(), "code", userBean.getCode());
 		SettingHelper.setEditor(getContext(), "hospital",
 				userBean.getHospital());
@@ -71,6 +70,11 @@ public class SettingUtility {
 				userBean.getImageurl());
 		SettingHelper.setEditor(getContext(), "password",
 				userBean.getPassword());
+		SettingHelper.setEditor(getContext(), "degree", userBean.getDegree());
+		SettingHelper.setEditor(getContext(), "planning",
+				userBean.getPlanning());
+		SettingHelper.setEditor(getContext(), "interest",
+				userBean.getInterest());
 		// SettingHelper.setEditor(getContext(), "verificationno",
 		// userBean.getVerificationno());
 	}
@@ -80,8 +84,8 @@ public class SettingUtility {
 				"userid", "");
 		if (!TextUtils.isEmpty(userid)) {
 			UserBean userBean = new UserBean();
-			userBean.setBirthday(SettingHelper.getSharedPreferences(
-					getContext(), "birthday", ""));
+			userBean.setAge(SettingHelper.getSharedPreferences(getContext(),
+					"age", ""));
 			userBean.setCode(SettingHelper.getSharedPreferences(getContext(),
 					"code", ""));
 			userBean.setLicenseimgurl(SettingHelper.getSharedPreferences(
@@ -107,6 +111,12 @@ public class SettingUtility {
 			userBean.setUserid(userid);
 			userBean.setUsername(SettingHelper.getSharedPreferences(
 					getContext(), "username", ""));
+			userBean.setDegree(SettingHelper.getSharedPreferences(getContext(),
+					"degree", ""));
+			userBean.setPlanning(SettingHelper.getSharedPreferences(
+					getContext(), "planning", ""));
+			userBean.setInterest(SettingHelper.getSharedPreferences(
+					getContext(), "interest", ""));
 			return userBean;
 		}
 		return null;

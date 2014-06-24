@@ -31,9 +31,12 @@ public class RegisterDao {
 	private String mail;
 	private String password;
 	private String gender;
-	private String birthday;
+	private String age;
 	private String code = "";
 	private String verificationNo = "";
+	private String degree;
+	private String planning;
+	private String interest;
 
 	public RegisterDao() {
 
@@ -49,14 +52,17 @@ public class RegisterDao {
 		this.mail = bean.getMail();
 		this.password = bean.getPassword();
 		this.gender = bean.getGender();
-		this.birthday = bean.getBirthday();
+		this.age = bean.getAge();
 		this.code = bean.getCode();
 		this.verificationNo = bean.getVerificationno();
+		this.degree = bean.getDegree();
+		this.planning = bean.getPlanning();
+		this.interest = bean.getInterest();
 	}
 
 	public RegisterDao(String token, String user_name, String hospital,
 			String departments, String post, String region, String phone,
-			String mail, String password, String gender, String birthday, String code, String verificationNo) {
+			String mail, String password, String gender, String age, String code, String verificationNo) {
 		this.access_token = token;
 		this.user_name = user_name;
 		this.hospital = hospital;
@@ -67,7 +73,7 @@ public class RegisterDao {
 		this.mail = mail;
 		this.password = password;
 		this.gender = gender;
-		this.birthday = birthday;
+		this.age = age;
 		this.code = code;
 		this.verificationNo = verificationNo;
 	}
@@ -106,10 +112,13 @@ public class RegisterDao {
 		map.put("phone", phone);
 		map.put("mail", mail);
 		map.put("password", password);
-		map.put("gender", gender);
-		map.put("birthday", birthday);
+		map.put("gender", gender.equals("男") ? "1" : "0");
+		map.put("age", age);
 		map.put("code", code);
 		map.put("verificationNo", verificationNo);
+		map.put("degree", degree);
+		map.put("planning", planning);
+		map.put("interest", interest);
 
 		String jsonData = HttpUtility.getInstance().executeNormalTask(
 				HttpMethod.Post, apiUrl, map);
@@ -207,13 +216,6 @@ public class RegisterDao {
 		this.gender = gender;
 	}
 
-	public String getBirthday() {
-		return birthday;
-	}
-
-	public void setBirthday(String birthday) {
-		this.birthday = birthday;
-	}
 
 	public String getCode() {
 		return code;

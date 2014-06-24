@@ -63,7 +63,7 @@
     
     <string name="update_waiting">请等待...</string>
     <string name="update_version">版本升级</string>
-    <string name="update_content">1.切换接口地址.\n2.标题栏图标适配显示.\n3.无网络情况，logo不显示\n4.扫描二维码，提示应该竖屏显示\n5.调整扫描二维码镜头，避免扫描变形</string>
+    <string name="update_content">1.规划需求及兴趣点默认选中\n2.注册文本框输入提示消息\n3.拍照去掉自定义裁剪功能</string>
     <string name="update_description">发现有新的版本，是否升级？</string>
     <string name="update_modified">更新内容：</string>
     <string name="update_upgrade">升级</string>

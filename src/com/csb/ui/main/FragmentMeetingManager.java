@@ -67,6 +67,7 @@ public class FragmentMeetingManager extends Fragment {
 				// new GetDataTask(false).execute();
 			}
 		});
+		
 		listView.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override
@@ -81,27 +82,6 @@ public class FragmentMeetingManager extends Fragment {
 		listView.setShowFooterWhenNoMore(false);
 		listView.setDropDownStyle(false);
 
-		/*
-		 * listItems = new LinkedList<Map<String, Object>>(); Map<String,
-		 * Object> m1 = new HashMap<String, Object>(); m1.put("title",
-		 * "高压学院压学院高压学院高压学院高压学院高1"); m1.put("date", "2014-01-02");
-		 * m1.put("status", 0); listItems.add(m1); Map<String, Object> m2 = new
-		 * HashMap<String, Object>(); m2.put("title", "高压学院压学院高压学院高压学院高压学院高2");
-		 * m2.put("date", "2014-01-03"); m2.put("status", 2); listItems.add(m2);
-		 * Map<String, Object> m3 = new HashMap<String, Object>();
-		 * m3.put("title", "高压学院压学院高压学院高压学院高压学院高3s"); m3.put("date",
-		 * "2014-01-03"); m3.put("status", 3); listItems.add(m3); Map<String,
-		 * Object> m4 = new HashMap<String, Object>(); m4.put("title",
-		 * "高压学院压学院高压学院高压学院高压学院高1"); m4.put("date", "2014-01-02");
-		 * m4.put("status", 4); listItems.add(m4); Map<String, Object> m5 = new
-		 * HashMap<String, Object>(); m5.put("title", "高压学院压学院高压学院高压学院高压学院高1");
-		 * m5.put("date", "2014-01-02"); m5.put("status", 1); listItems.add(m5);
-		 * Map<String, Object> m6 = new HashMap<String, Object>();
-		 * m6.put("title", "高压学院压学院高压学院高压学院高压学院高1"); m6.put("date",
-		 * "2014-01-02"); m6.put("status", 1); listItems.add(m6);
-		 */
-
-		// listItems.addAll(Arrays.asList(mStrings));
 
 		return view;
 	}
@@ -202,12 +182,12 @@ public class FragmentMeetingManager extends Fragment {
 		 * @see android.widget.ListAdapter#getView(int, android.view.View,
 		 *      android.view.ViewGroup)
 		 */
-		public View getView(int position, View convertView, ViewGroup parent) {
+		public View getView(int position, View convertView, final ViewGroup parent) {
 			// A ViewHolder keeps references to children views to avoid
 			// unneccessary calls
 			// to findViewById() on each row.
 			ViewHolder holder;
-
+			final MeetingItemBean item = listItems.get(position);
 			// When convertView is not null, we can reuse it directly, there is
 			// no need
 			// to reinflate it. We only inflate a new View when the convertView
@@ -227,6 +207,36 @@ public class FragmentMeetingManager extends Fragment {
 						.findViewById(R.id.item_date_tv);
 				holder.status = (TextView) convertView
 						.findViewById(R.id.item_status_tv);
+				
+				holder.title.setOnClickListener(new OnClickListener() {
+					
+					@Override
+					public void onClick(View v) {
+						Intent intent = new Intent(parent.getContext(), MeetingDetailActivity.class);
+						intent.putExtra(BundleArgsConstants.MEETING_EXTRA, item);
+						parent.getContext().startActivity(intent);
+					}
+				});
+				
+				holder.date.setOnClickListener(new OnClickListener() {
+					
+					@Override
+					public void onClick(View v) {
+						Intent intent = new Intent(parent.getContext(), MeetingDetailActivity.class);
+						intent.putExtra(BundleArgsConstants.MEETING_EXTRA, item);
+						parent.getContext().startActivity(intent);
+					}
+				});
+				
+				holder.status.setOnClickListener(new OnClickListener() {
+					
+					@Override
+					public void onClick(View v) {
+						Intent intent = new Intent(parent.getContext(), MeetingDetailActivity.class);
+						intent.putExtra(BundleArgsConstants.MEETING_EXTRA, item);
+						parent.getContext().startActivity(intent);
+					}
+				});
 
 				convertView.setTag(holder);
 			} else {
@@ -236,7 +246,7 @@ public class FragmentMeetingManager extends Fragment {
 			}
 
 			// Bind the data efficiently with the holder.
-			MeetingItemBean item = listItems.get(position);
+			
 			holder.title.setText(item.getMeeting_name());
 			holder.date.setText(item.getMeeting_time());
 			try {

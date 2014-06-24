@@ -20,8 +20,9 @@ public class ClassPathResource {
 	     * @param email 要验证的email
 	     * @return
 	     */
-	    public static boolean isEmail(String email){     
-	     String str="^([a-zA-Z0-9]*[-_]?[a-zA-Z0-9]+)*@([a-zA-Z0-9]*[-_]?[a-zA-Z0-9]+)+[\\.][A-Za-z]{2,3}([\\.][A-Za-z]{2})?$";
+	    public static boolean isEmail(String email){    
+	    	String str = "^([a-z0-9A-Z]+[-|\\.]?)+[a-z0-9A-Z]@([a-z0-9A-Z]+(-[a-z0-9A-Z]+)?\\.)+[a-zA-Z]{2,}$";
+//	    	String str="^([a-zA-Z0-9]*[-_]?[a-zA-Z0-9]+)*@([a-zA-Z0-9]*[-_]?[a-zA-Z0-9]+)+[\\.][A-Za-z]{2,3}([\\.][A-Za-z]{2})?$";
 	        Pattern p = Pattern.compile(str);     
 	        Matcher m = p.matcher(email);            
 	        return m.matches();     

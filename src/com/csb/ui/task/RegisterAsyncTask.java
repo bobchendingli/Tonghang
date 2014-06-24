@@ -35,7 +35,7 @@ public class RegisterAsyncTask extends
 	
 	@Override
 	protected ResultRegisterBean doInBackground(Void... params) {
-		h.sendEmptyMessage(BundleArgsConstants.REQUEST_START);
+		h.sendEmptyMessage(BundleArgsConstants.REGISTER_START);
 		RegisterDao dao = new RegisterDao(userBean);
 		try {
 			return dao.register();

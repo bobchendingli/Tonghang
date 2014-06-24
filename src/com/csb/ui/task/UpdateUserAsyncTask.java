@@ -29,12 +29,12 @@ public class UpdateUserAsyncTask extends
 	public UpdateUserAsyncTask(UserBean userBean, Handler h) {
 		this.userBean = userBean;
 		this.h = h;
+		h.sendEmptyMessage(BundleArgsConstants.REQUEST_START);
 	}
 	
 	
 	@Override
 	protected ResultBean doInBackground(Void... params) {
-		h.sendEmptyMessage(BundleArgsConstants.REQUEST_START);
 		UserDao dao = new UserDao(userBean);
 		try {
 			return dao.update();

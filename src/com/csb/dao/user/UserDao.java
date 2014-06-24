@@ -23,7 +23,7 @@ public class UserDao {
 	private String userid;
 	private String username;
 	private String gender;
-	private String birthday;
+	private String age;
 	private String code;
 	private String hospital;
 	private String departments;
@@ -32,12 +32,18 @@ public class UserDao {
 	private String phone;
 	private String mail;
 	private String password;
+	private String degree;
+	private String planning;
+	private String interest;
+	
+	
+	
 
 	public UserDao(UserBean userBean) {
 		this.userid = userBean.getUserid();
 		this.username = userBean.getUsername();
 		this.gender = userBean.getGender();
-		this.birthday = userBean.getBirthday();
+		this.age = userBean.getAge();
 		this.code = userBean.getCode();
 		this.hospital = userBean.getHospital();
 		this.departments = userBean.getDepartments();
@@ -46,6 +52,9 @@ public class UserDao {
 		this.phone = userBean.getPhone();
 		this.mail = userBean.getMail();
 		this.password = userBean.getPassword();
+		this.degree = userBean.getDegree();
+		this.planning = userBean.getPlanning();
+		this.interest = userBean.getInterest();
 	}
 
 	public String getUserid() {
@@ -72,12 +81,12 @@ public class UserDao {
 		this.gender = gender;
 	}
 
-	public String getBirthday() {
-		return birthday;
+	public void setAge(String age) {
+		this.age = age;
 	}
-
-	public void setBirthday(String birthday) {
-		this.birthday = birthday;
+	
+	public String getAge() {
+		return age;
 	}
 
 	public String getCode() {
@@ -143,8 +152,8 @@ public class UserDao {
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("userid", userid);
 		map.put("username", username);
-		map.put("gender", gender);
-		map.put("birthday", birthday);
+		map.put("gender", "男".equals(gender) ? "1" : "0");
+		map.put("age", age);
 		map.put("code", code);
 		map.put("hospital", hospital);
 		map.put("departments", departments);
@@ -153,7 +162,10 @@ public class UserDao {
 		map.put("phone", phone);
 		map.put("mail", mail);
 		map.put("password", password);
-
+		map.put("degree", degree);
+		map.put("planning", planning);
+		map.put("interest", interest);
+		
 		String jsonData = HttpUtility.getInstance().executeNormalTask(
 				HttpMethod.Post, apiUrl, map);
 

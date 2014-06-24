@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.csb"
     android:versionCode="2"
-    android:versionName="1.3" >
+    android:versionName="1.5" >
 
     <uses-sdk android:minSdkVersion="8" />
     
@@ -11,11 +11,7 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
-    <uses-permission android:name="android.permission.CAMERA" >
-    </uses-permission>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" >
-    </uses-permission>
-
+    <uses-permission android:name="android.permission.CAMERA" />
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.camera.autofocus" />
 
@@ -61,12 +57,25 @@
         </activity>
         
         <activity
-            android:name="com.csb.ui.login.RegisterActivity"
+            android:name="com.csb.ui.login.RegisterConfirmActivity"
             android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden" 
             android:theme="@style/Theme.NoTitle" >
         </activity>
         <activity
-            android:name="com.csb.ui.login.RegisterConfirmActivity"
+            android:name="com.csb.ui.login.XueshuActivity"
+            android:screenOrientation="portrait"
+             android:windowSoftInputMode="adjustUnspecified|stateHidden" 
+            android:theme="@style/Theme.NoTitle" >
+        </activity>
+        <activity
+            android:name="com.csb.ui.login.XingquedianActivity"
+            android:screenOrientation="portrait"
+             android:windowSoftInputMode="adjustUnspecified|stateHidden" 
+            android:theme="@style/Theme.NoTitle" >
+        </activity>
+        <activity
+            android:name="com.csb.ui.login.RegisterActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.NoTitle"
             android:windowSoftInputMode="adjustUnspecified|stateHidden" >

@@ -1,3 +1,4 @@
+
 package com.csb.ui.setting;
 
 import android.app.Activity;
@@ -62,15 +63,7 @@ public class AboutActivity extends Activity implements OnClickListener {
 		btn_title_right.setVisibility(View.INVISIBLE);
 
 		btn_update = (Button) findViewById(R.id.btn_update);
-		btn_update.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				VersionUpdateManager
-						.setUpdateMode(VersionUpdateManager.UPDATE_MODE_MANUAL);
-				VersionUpdateManager.createInstance(context);
-			}
-		});
+		btn_update.setOnClickListener(this);
 		btn_response = (Button) findViewById(R.id.btn_response);
 		btn_response.setOnClickListener(this);
 	}
@@ -141,7 +134,9 @@ public class AboutActivity extends Activity implements OnClickListener {
 	}
 
 	private void doUpdate() {
-		ToastUtils.show(context, "已经是最新版本");
+		VersionUpdateManager
+		.setUpdateMode(VersionUpdateManager.UPDATE_MODE_MANUAL);
+		VersionUpdateManager.createInstance(context);
 	}
 	
 	

@@ -1,5 +1,8 @@
 package com.csb.ui.main;
 
+import java.io.File;
+import java.io.FileOutputStream;
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -29,6 +32,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import cn.trinea.android.common.util.ImageUtils;
 
 import com.csb.R;
 import com.csb.bean.ResultUploadPicBean;
@@ -87,6 +91,9 @@ public class RightSlidingMenuFragment extends Fragment implements
 
 	private static String mImageCapturePath;
 
+	private static String SCALE_IMAGE_PATH = Environment
+			.getExternalStorageDirectory() + File.separator + "temp_scale.jpg";
+
 	private static final int FROM_FILE = 1;
 	private static final int FROM_CAMERA = 2;
 	private static final int CROP_BIG_PICTURE = 4;
@@ -106,7 +113,7 @@ public class RightSlidingMenuFragment extends Fragment implements
 		initView(view);
 		return view;
 	}
-	
+
 	@Override
 	public void onStart() {
 		super.onStart();
@@ -118,13 +125,13 @@ public class RightSlidingMenuFragment extends Fragment implements
 					headImageView);
 		}
 	}
-	
+
 	@Override
 	public void onStop() {
 		super.onStop();
 		GlobalContext.getInstance().saveImgDataToDb();
 	}
-	
+
 	@Override
 	public void onDestroyView() {
 		super.onDestroyView();
@@ -151,21 +158,11 @@ public class RightSlidingMenuFragment extends Fragment implements
 						e.printStackTrace();
 					}
 				} else {
-					/*
-					 * Intent intent = new Intent();
-					 * 
-					 * intent.setType("image/*");
-					 * intent.setAction(Intent.ACTION_GET_CONTENT);
-					 * 
-					 * startActivityForResult(Intent.createChooser(intent,
-					 * "Complete action using"), PICK_FROM_FILE);
-					 */
 					Intent i = new Intent(
 							Intent.ACTION_PICK,
 							android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
 					startActivityForResult(i, FROM_FILE);
 				}
-				// dialog.dismiss();
 			}
 		}).create().show();
 	}
@@ -230,27 +227,29 @@ public class RightSlidingMenuFragment extends Fragment implements
 		super.onActivityResult(requestCode, resultCode, data);
 
 		if (resultCode == Activity.RESULT_OK) {
-			if(requestCode == FROM_FILE && null != data){
+			if (requestCode == FROM_FILE && null != data) {
 				Uri selectedImage = data.getData();
 				String[] filePathColumn = { MediaStore.Images.Media.DATA };
-	
-				Cursor cursor = context.getContentResolver().query(selectedImage,
-						filePathColumn, null, null, null);
+
+				Cursor cursor = context.getContentResolver().query(
+						selectedImage, filePathColumn, null, null, null);
 				cursor.moveToFirst();
-	
+
 				int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
 				mImageCapturePath = cursor.getString(columnIndex);
 				cursor.close();
-			} else if (requestCode == FROM_CAMERA){
-				if(imageUri != null) {
-					cropImageUri(imageUri, 150, 150, CROP_SMALL_PICTURE);
+			} else if (requestCode == FROM_CAMERA) {
+				if (imageUri != null) {
+					ImageUtils.scaleImage(imageUri.getPath(), SCALE_IMAGE_PATH);
+					mImageCapturePath = SCALE_IMAGE_PATH;
+					// cropImageUri(imageUri, 150, 150, CROP_SMALL_PICTURE);
 				}
-			}  else if (requestCode == CROP_SMALL_PICTURE){
-				if(imageUri != null) {
+			} else if (requestCode == CROP_SMALL_PICTURE) {
+				if (imageUri != null) {
 					mImageCapturePath = imageUri.getPath();
 				}
-			} 
-			
+			}
+
 			if (!TextUtils.isEmpty(mImageCapturePath)) {
 				Bitmap bitmap = BitmapFactory.decodeFile(mImageCapturePath);
 				headImageView.setImageBitmap(bitmap);
@@ -258,8 +257,8 @@ public class RightSlidingMenuFragment extends Fragment implements
 				if (Utility.isTaskStopped(uploadPicAsyncTask)) {
 					uploadPicAsyncTask = new UploadPicAsyncTask(GlobalContext
 							.getInstance().getUserBean().getUserid(),
-							mImageCapturePath, UploadPicAsyncTask.UPLOAD_HEAD_PIC,
-							myHandler);
+							mImageCapturePath,
+							UploadPicAsyncTask.UPLOAD_HEAD_PIC, myHandler);
 					uploadPicAsyncTask
 							.executeOnExecutor(MyAsyncTask.THREAD_POOL_EXECUTOR);
 				}
@@ -267,8 +266,9 @@ public class RightSlidingMenuFragment extends Fragment implements
 		}
 		// String picturePath contains the path of selected Image
 	}
+
 	
-	
+
 	private void cropImageUri(Uri uri, int outputX, int outputY, int requestCode) {
 		Intent intent = new Intent("com.android.camera.action.CROP");
 		intent.setDataAndType(uri, "image/*");
@@ -446,6 +446,5 @@ public class RightSlidingMenuFragment extends Fragment implements
 		GlobalContext.getInstance().setUserBean(userBean);
 		ToastUtils.show(context, "图片上传成功!");
 	}
-	
-	
+
 }

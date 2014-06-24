@@ -1,5 +1,6 @@
 package com.csb.ui.main;
 
+import android.annotation.TargetApi;
 import android.app.AlarmManager;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -7,6 +8,7 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTabHost;
@@ -15,14 +17,13 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
-
 import com.csb.R;
 import com.csb.bean.UserBean;
 import com.csb.broadcastreceiver.TongHangReciever;
 import com.csb.support.http.VersionUpdateManager;
 import com.csb.support.settinghelper.SettingUtility;
 import com.csb.ui.login.LoginActivity;
-import com.csb.ui.login.RegisterConfirmActivity;
+import com.csb.ui.login.RegisterActivity;
 import com.csb.utils.BundleArgsConstants;
 import com.csb.utils.GlobalContext;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
@@ -42,7 +43,7 @@ public class MainActivity extends SlidingFragmentActivity implements
 
 	public static Intent newIntent() {
 		return new Intent(GlobalContext.getInstance(),
-				RegisterConfirmActivity.class);
+				RegisterActivity.class);
 	}
 
 	@Override
@@ -174,8 +175,9 @@ public class MainActivity extends SlidingFragmentActivity implements
 
 		btn_title_right = (Button) findViewById(R.id.btn_title_right);
 		btn_title_right.setText("");
-		btn_title_right.setBackgroundDrawable(getResources().getDrawable(
-				R.drawable.icon_gerenzhongxin));
+		btn_title_right.setBackgroundResource(R.drawable.bmp_menu);
+//		btn_title_right.setBackgroundDrawable(getResources().getDrawable(
+//				R.drawable.icon_gerenzhongxin));
 		btn_title_right.setOnClickListener(this);
 
 		btn_title_left = (Button) findViewById(R.id.btn_title_left);
