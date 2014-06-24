@@ -38,7 +38,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="25dp"
         android:gravity="center"
-        android:text="同行网V1.4版本" />
+        android:text="同行网V1.6版本" />
 <!-- android:text="Copyright#2014.tonghangwang.com.inc \nAll Right Reserved" -->
 
     <Button
