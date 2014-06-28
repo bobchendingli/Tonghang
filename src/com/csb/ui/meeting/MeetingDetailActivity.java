@@ -32,6 +32,7 @@ import com.csb.ui.task.GetMeetingDetailAsyncTask;
 import com.csb.ui.task.UpdateMeetingQuestionAsyncTask;
 import com.csb.ui.task.UpdateMeetingStatusAsyncTask;
 import com.csb.utils.BundleArgsConstants;
+import com.csb.utils.CalendarUtils;
 import com.csb.utils.GlobalContext;
 import com.csb.utils.ToastUtils;
 import com.csb.utils.Utility;
@@ -140,16 +141,17 @@ public class MeetingDetailActivity extends ListActivity implements
 		tv_meeting_address = (TextView) findViewById(R.id.tv_meeting_address);
 		tv_meeting_spaker = (TextView) findViewById(R.id.tv_meeting_spaker);
 		tv_meeting_arrangement = (TextView) findViewById(R.id.tv_meeting_arrangement);
-		
-//		if(meetingItemBean != null && "0".equals(meetingItemBean.getUser_status())){
-//			btn_title_right.setVisibility(View.INVISIBLE);
-//			btn_question.setVisibility(View.GONE);
-//			getListView().setVisibility(View.GONE);
-//		} else {
-//			btn_title_right.setVisibility(View.VISIBLE);
-//			btn_question.setVisibility(View.VISIBLE);
-//			getListView().setVisibility(View.VISIBLE);
-//		}
+
+		// if(meetingItemBean != null &&
+		// "0".equals(meetingItemBean.getUser_status())){
+		// btn_title_right.setVisibility(View.INVISIBLE);
+		// btn_question.setVisibility(View.GONE);
+		// getListView().setVisibility(View.GONE);
+		// } else {
+		// btn_title_right.setVisibility(View.VISIBLE);
+		// btn_question.setVisibility(View.VISIBLE);
+		// getListView().setVisibility(View.VISIBLE);
+		// }
 		// tv_meeting_question = (TextView)
 		// findViewById(R.id.tv_meeting_question);
 
@@ -183,7 +185,7 @@ public class MeetingDetailActivity extends ListActivity implements
 	private Dialog alertDialog = null;
 
 	private void showDialog() {
-		if(dialog != null  && dialog.isShowing()){
+		if (dialog != null && dialog.isShowing()) {
 			dialog.dismiss();
 		}
 		dialog = new ProgressDialog(context);
@@ -194,7 +196,7 @@ public class MeetingDetailActivity extends ListActivity implements
 	}
 
 	private void dismissDialog() {
-		if (dialog != null && dialog.isShowing()) {
+		if (dialog != null && dialog.isShowing() && !this.isFinishing()) {
 			dialog.dismiss();
 		}
 	}
@@ -276,7 +278,7 @@ public class MeetingDetailActivity extends ListActivity implements
 
 		if (userStatus == 4) {
 			// 会后调查问卷提醒
-			if(alertDialog!=null && alertDialog.isShowing()) {
+			if (alertDialog != null && alertDialog.isShowing()) {
 				alertDialog.dismiss();
 			}
 			alertDialog = new AlertDialog.Builder(this)
@@ -380,18 +382,19 @@ public class MeetingDetailActivity extends ListActivity implements
 	}
 
 	/**
-	 * meeting_status 会议状态(5种 0:未接受邀请 1:已报名 2:已签到 3:会议结束，未填写会后问卷 4:已填写会后问卷5:会议结束)
+	 * meeting_status 会议状态(5种 0:未接受邀请 1:已报名 2:已签到 3:会议结束，未填写会后问卷
+	 * 4:已填写会后问卷5:会议结束)
 	 * 
 	 * @param userStatus
 	 */
 	private void updateButtonStatus(int userStatus) {
 		Drawable drBaoming, drYinBaoming, drQiandao, drYinQiandao;
-		
+
 		btn_title_right.setVisibility(View.VISIBLE);
 		btn_question.setVisibility(View.VISIBLE);
 		getListView().setVisibility(View.VISIBLE);
 		switch (userStatus) {
-		case 0: //未接受邀请
+		case 0: // 未接受邀请
 			// btn_question.setEnabled(true);
 			btn_baoming.setText("报名");
 			btn_qiandao.setText("签到");
@@ -408,7 +411,7 @@ public class MeetingDetailActivity extends ListActivity implements
 			drQiandao.setBounds(0, 0, drQiandao.getMinimumWidth(),
 					drQiandao.getMinimumHeight());
 			btn_qiandao.setCompoundDrawables(drQiandao, null, null, null);
-			
+
 			btn_title_right.setVisibility(View.INVISIBLE);
 			btn_question.setVisibility(View.GONE);
 			getListView().setVisibility(View.GONE);
@@ -416,7 +419,7 @@ public class MeetingDetailActivity extends ListActivity implements
 			btn_baoming.setEnabled(true);
 			btn_qiandao.setEnabled(false);
 			break;
-		case 1: //已报名
+		case 1: // 已报名
 			// btn_question.setEnabled(true);
 
 			btn_baoming.setText("已报名");
@@ -436,15 +439,16 @@ public class MeetingDetailActivity extends ListActivity implements
 			drQiandao.setBounds(0, 0, drQiandao.getMinimumWidth(),
 					drQiandao.getMinimumHeight());
 			btn_qiandao.setCompoundDrawables(drQiandao, null, null, null);
-			
+
 			btn_title_right.setVisibility(View.INVISIBLE);
 			btn_question.setVisibility(View.GONE);
 			getListView().setVisibility(View.GONE);
 
 			btn_baoming.setEnabled(false);
 			btn_qiandao.setEnabled(true);
+
 			break;
-		case 2: //已签到但未填写会前问卷
+		case 2: // 已签到但未填写会前问卷
 			// btn_question.setEnabled(true);
 			btn_baoming.setText("已报名");
 			btn_qiandao.setText("已签到");
@@ -468,27 +472,27 @@ public class MeetingDetailActivity extends ListActivity implements
 
 			btn_baoming.setEnabled(false);
 			btn_qiandao.setEnabled(false);
-			
-			if(alertDialog!=null && alertDialog.isShowing()) {
+
+			if (alertDialog != null && alertDialog.isShowing()) {
 				alertDialog.dismiss();
 			}
 			alertDialog = new AlertDialog.Builder(this)
-			.setMessage("您有一个会前问卷需要填写.")
-			.setPositiveButton("确定",
-					new DialogInterface.OnClickListener() {
-						@Override
-						public void onClick(DialogInterface dialog,
-								int which) {
-							dialog.dismiss();
-							jumpToSurveyActivity(SURVEY_CODE_START);
-						}
+					.setMessage("您有一个会前问卷需要填写.")
+					.setPositiveButton("确定",
+							new DialogInterface.OnClickListener() {
+								@Override
+								public void onClick(DialogInterface dialog,
+										int which) {
+									dialog.dismiss();
+									jumpToSurveyActivity(SURVEY_CODE_START);
+								}
 
-					}).create();
+							}).create();
 			alertDialog.show();
 			break;
-		case 3://已签到已填写会前问卷
-		case 4://会议结束但未填写会后问卷
-		case 5://会议结束已填写会后问卷
+		case 3:// 已签到已填写会前问卷
+		case 4:// 会议结束但未填写会后问卷
+		case 5:// 会议结束已填写会后问卷
 			btn_baoming.setText("已报名");
 			btn_qiandao.setText("已签到");
 
@@ -538,15 +542,25 @@ public class MeetingDetailActivity extends ListActivity implements
 	}
 
 	private void confirmBaoming() {
-		if(alertDialog!=null && alertDialog.isShowing()) {
+		if (alertDialog != null && alertDialog.isShowing()) {
 			alertDialog.dismiss();
 		}
-		alertDialog = new AlertDialog.Builder(this).setMessage("您确定要报名吗?")
+		alertDialog = new AlertDialog.Builder(this)
+				.setMessage("您确定要报名吗?")
 				.setPositiveButton("确定", new DialogInterface.OnClickListener() {
 					@Override
 					public void onClick(DialogInterface dialog, int which) {
 						dialog.dismiss();
 						doBaoming();
+						// 增加提醒
+						try {
+							CalendarUtils.writeEventFromMeeting(
+									MeetingDetailActivity.this,
+									meetingItemBean.getMeeting_time(),
+									meetingItemBean.getMeeting_name());
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
 					}
 
 				})
@@ -561,7 +575,6 @@ public class MeetingDetailActivity extends ListActivity implements
 				}).create();
 		alertDialog.show();
 	}
-
 
 	private void jumpToCapturActivity() {
 		Intent intent = new Intent(context, CaptureActivity.class);
@@ -591,7 +604,7 @@ public class MeetingDetailActivity extends ListActivity implements
 	private void doFinishWithoutAnswer() {
 		updateStatus("4");
 	}
-	
+
 	private void doFinishWithAnswer() {
 		updateStatus("5");
 	}
@@ -618,7 +631,7 @@ public class MeetingDetailActivity extends ListActivity implements
 		LayoutInflater factory = LayoutInflater.from(this);
 		final View textEntryView = factory.inflate(
 				R.layout.alert_dialog_text_question, null);
-		if(alertDialog!=null && alertDialog.isShowing()) {
+		if (alertDialog != null && alertDialog.isShowing()) {
 			alertDialog.dismiss();
 		}
 		alertDialog = new AlertDialog.Builder(MeetingDetailActivity.this)
@@ -637,7 +650,8 @@ public class MeetingDetailActivity extends ListActivity implements
 									ToastUtils.show(context, "内容不能为空!");
 									return;
 								} else {
-									questionContent = insertStr(questionContent, question);
+									questionContent = insertStr(
+											questionContent, question);
 									adapter.notifyDataSetChanged();
 									if (Utility
 											.isTaskStopped(updateMeetingQuestionAsyncTask)) {

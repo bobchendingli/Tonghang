@@ -79,7 +79,14 @@ public class MyCalendarActivity extends FragmentActivity {
 		int month = selectDate.getInt(CaldroidFragment.MONTH);
 		int year = selectDate.getInt(CaldroidFragment.YEAR);
 		setCustomResourceForDates(year, month);
-
+		
+		Calendar cal = Calendar.getInstance();
+		Date blueDate = cal.getTime();
+		if (caldroidFragment != null) {
+			caldroidFragment.setBackgroundResourceForDate(R.color.blue,
+					blueDate);
+			caldroidFragment.setTextColorForDate(R.color.white, blueDate);
+		}
 	}
 
 	@Override
@@ -145,13 +152,6 @@ public class MyCalendarActivity extends FragmentActivity {
 					cal.get(Calendar.MONTH) + 1);
 			selectDate.putInt(CaldroidFragment.YEAR, cal.get(Calendar.YEAR));
 		}
-		Calendar cal = Calendar.getInstance();
-		Date blueDate = cal.getTime();
-		if (caldroidFragment != null) {
-			caldroidFragment.setBackgroundResourceForDate(R.color.blue,
-					blueDate);
-			caldroidFragment.setTextColorForDate(R.color.white, blueDate);
-		}
 
 		// Attach to the activity
 		FragmentTransaction t = getSupportFragmentManager().beginTransaction();
@@ -172,7 +172,13 @@ public class MyCalendarActivity extends FragmentActivity {
 				selectDate.putInt(CaldroidFragment.MONTH, month);
 				selectDate.putInt(CaldroidFragment.YEAR, year);
 				setCustomResourceForDates(year, month);
-
+				Calendar cal = Calendar.getInstance();
+				Date date = cal.getTime();
+				if (caldroidFragment != null) {
+					caldroidFragment.setBackgroundResourceForDate(R.color.blue,
+							date);
+					caldroidFragment.setTextColorForDate(R.color.white, date);
+				}
 			}
 
 			@Override
@@ -182,7 +188,9 @@ public class MyCalendarActivity extends FragmentActivity {
 			@Override
 			public void onCaldroidViewCreated() {
 				Calendar cal = Calendar.getInstance();
-				showEvents(cal.getTime());
+				Date date = cal.getTime();
+				showEvents(date);
+				
 			}
 
 		};

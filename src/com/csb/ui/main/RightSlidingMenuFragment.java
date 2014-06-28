@@ -192,8 +192,11 @@ public class RightSlidingMenuFragment extends Fragment implements
 		logoutBtn.setOnClickListener(this);
 
 		final UserBean userBean = GlobalContext.getInstance().getUserBean();
-		nameTextView.setText(userBean.getUsername());
-		emailTextView.setText(userBean.getMail());
+		if(userBean != null){
+			nameTextView.setText(userBean.getUsername());
+			emailTextView.setText(userBean.getMail());
+		}
+		
 
 		for (int i = 0; i < menuItemViews.length; i++) {
 			menuItemViews[i] = view.findViewById(menuItemViewIds[i]);

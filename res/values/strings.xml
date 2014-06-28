@@ -63,7 +63,7 @@
     
     <string name="update_waiting">请等待...</string>
     <string name="update_version">版本升级</string>
-    <string name="update_content">1.更新versioncode</string>
+    <string name="update_content">1.新增PDF文件显示功能，\n2.新增我的日历功能 </string>
     <string name="update_description">发现有新的版本，是否升级？</string>
     <string name="update_modified">更新内容：</string>
     <string name="update_upgrade">升级</string>

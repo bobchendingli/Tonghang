@@ -7,11 +7,11 @@ package com.csb.dao;
  */
 public class URLHelper {
     //base url
-    private static final String URL_TH = "http://i.college-cardio.org/Wap/";//"http://t.iappbee.com:7700/Wap/";
+    private static final String URL_TH = "http://t.iappbee.com:7700/Wap/";;//"http://i.college-cardio.org/Wap/"
 //    private static final String URL_TH = "http://124.254.5.211:7700/Wap/";
     //服务器文件存放目录
-    public static final String URL_SERVER_UPLOAD = "http://i.college-cardio.org/Uploads/";//"http://t.iappbee.com:7700/Uploads/";
-    public static final String URL_SERVER = "http://i.college-cardio.org";//"http://t.iappbee.com:7700";
+    public static final String URL_SERVER_UPLOAD = "http://t.iappbee.com:7700/Uploads/";;//"http://i.college-cardio.org/Uploads/"
+    public static final String URL_SERVER = "http://t.iappbee.com:7700";//"http://i.college-cardio.org";
     //注册
     public static final String URL_REGISTER = URL_TH + "Register/index";
     //短信验证码

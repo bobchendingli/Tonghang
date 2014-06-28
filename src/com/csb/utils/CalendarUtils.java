@@ -17,10 +17,10 @@ import cn.trinea.android.common.util.TimeUtils;
 public class CalendarUtils {
 	private static SimpleDateFormat sdf = new SimpleDateFormat(
 			"yyyy-MM-dd HH:mm");
-	private static SimpleDateFormat sdfDate = new SimpleDateFormat(
-			"yyyy-MM-dd");
-	private static SimpleDateFormat sdfTime = new SimpleDateFormat(
-			"HH:mm");
+	private static SimpleDateFormat sdfDateTime = new SimpleDateFormat(
+			"yyyy-MM-dd HH:mm:ss");
+	private static SimpleDateFormat sdfDate = new SimpleDateFormat("yyyy-MM-dd");
+	private static SimpleDateFormat sdfTime = new SimpleDateFormat("HH:mm");
 	private static String calanderURL = "";
 	private static String calanderEventURL = "";
 	private static String calanderRemiderURL = "";
@@ -39,7 +39,7 @@ public class CalendarUtils {
 	}
 
 	public static void writeEvent(Context context, String dateStr,
-			String contentStr) throws Exception{
+			String contentStr) throws Exception {
 		String calId = "";
 		Cursor userCursor = context.getContentResolver().query(
 				Uri.parse(calanderURL), null, null, null, null);
@@ -77,7 +77,73 @@ public class CalendarUtils {
 				values);
 	}
 
-	public static ArrayList<HashMap<String, String>> queryEventList(Context context, Date date) throws Exception {
+	public static void writeEventFromMeeting(Context context, String dateStr,
+			String contentStr) throws Exception {
+		String calId = "";
+		Cursor userCursor = context.getContentResolver().query(
+				Uri.parse(calanderURL), null, null, null, null);
+		if (userCursor.getCount() > 0) {
+			userCursor.moveToFirst();
+			calId = userCursor.getString(userCursor.getColumnIndex("_id"));
+
+		}
+		
+		//前一周提醒 
+		ContentValues event = new ContentValues();
+		event.put("title", contentStr);
+		event.put("description", contentStr);
+		event.put("calendar_id", calId);
+		Date date = sdfDateTime.parse(dateStr);
+
+		Calendar mCalendar = Calendar.getInstance();
+		mCalendar.setTimeInMillis(date.getTime());
+		mCalendar.set(Calendar.DAY_OF_MONTH, mCalendar.get(Calendar.DAY_OF_MONTH) - 7);
+		long start = mCalendar.getTime().getTime();
+
+		event.put("dtstart", start);
+		event.put("dtend", start);
+		// event.put("hasAlarm", 1);
+		event.put("eventTimezone", Time.getCurrentTimezone());
+
+		Uri newEvent = context.getContentResolver().insert(
+				Uri.parse(calanderEventURL), event);
+		long id = Long.parseLong(newEvent.getLastPathSegment());
+		ContentValues values = new ContentValues();
+		values.put("event_id", id);
+		values.put("minutes", 0);
+		values.put("method", 1);
+		context.getContentResolver().insert(Uri.parse(calanderRemiderURL),
+				values);
+		
+		//前一天提醒
+		event = new ContentValues();
+		event.put("title", contentStr);
+		event.put("description", contentStr);
+		event.put("calendar_id", calId);
+
+		mCalendar = Calendar.getInstance();
+		mCalendar.setTimeInMillis(date.getTime());
+		mCalendar.set(Calendar.DAY_OF_MONTH, mCalendar.get(Calendar.DAY_OF_MONTH) - 1);
+		start = mCalendar.getTime().getTime();
+
+		event.put("dtstart", start);
+		event.put("dtend", start);
+		// event.put("hasAlarm", 1);
+		event.put("eventTimezone", Time.getCurrentTimezone());
+
+		newEvent = context.getContentResolver().insert(
+				Uri.parse(calanderEventURL), event);
+		id = Long.parseLong(newEvent.getLastPathSegment());
+		values = new ContentValues();
+		values.put("event_id", id);
+		values.put("minutes", 0);
+		values.put("method", 1);
+		context.getContentResolver().insert(Uri.parse(calanderRemiderURL),
+				values);
+	}
+
+	public static ArrayList<HashMap<String, String>> queryEventList(
+			Context context, Date date) throws Exception {
 		Calendar mCalendar = Calendar.getInstance();
 		mCalendar.setTimeInMillis(date.getTime());
 		mCalendar.set(Calendar.HOUR_OF_DAY, 00);
@@ -87,13 +153,18 @@ public class CalendarUtils {
 		mCalendar.set(Calendar.HOUR_OF_DAY, 23);
 		mCalendar.set(Calendar.MINUTE, 59);
 		mCalendar.set(Calendar.SECOND, 59);
-		long endTime = mCalendar.getTimeInMillis();;
-		
+		long endTime = mCalendar.getTimeInMillis();
+		;
+
 		Cursor eventCursor = context.getContentResolver().query(
-				Uri.parse(calanderEventURL), new String[]{"title", "dtstart"}, "dtstart>=? and dtstart<=?", new String[]{String.valueOf(startTime), String.valueOf(endTime)}, null);
-		ArrayList<HashMap<String, String>> resultList= new ArrayList<HashMap<String, String>>();
+				Uri.parse(calanderEventURL),
+				new String[] { "title", "dtstart" },
+				"dtstart>=? and dtstart<=?",
+				new String[] { String.valueOf(startTime),
+						String.valueOf(endTime) }, null);
+		ArrayList<HashMap<String, String>> resultList = new ArrayList<HashMap<String, String>>();
 		while (eventCursor.moveToNext()) {
-			HashMap<String, String> map = new HashMap<String, String>(); 
+			HashMap<String, String> map = new HashMap<String, String>();
 			String eventTitle = eventCursor.getString(eventCursor
 					.getColumnIndex("title"));
 			Long eventDate = eventCursor.getLong(eventCursor
@@ -103,12 +174,12 @@ public class CalendarUtils {
 			map.put("time", time);
 			resultList.add(map);
 		}
-		
+
 		return resultList;
 	}
-	
-	
-	public static String queryEvents(Context context, Date date) throws Exception {
+
+	public static String queryEvents(Context context, Date date)
+			throws Exception {
 		Calendar mCalendar = Calendar.getInstance();
 		mCalendar.setTimeInMillis(date.getTime());
 		mCalendar.set(Calendar.HOUR_OF_DAY, 00);
@@ -118,10 +189,15 @@ public class CalendarUtils {
 		mCalendar.set(Calendar.HOUR_OF_DAY, 23);
 		mCalendar.set(Calendar.MINUTE, 59);
 		mCalendar.set(Calendar.SECOND, 59);
-		long endTime = mCalendar.getTimeInMillis();;
-		
+		long endTime = mCalendar.getTimeInMillis();
+		;
+
 		Cursor eventCursor = context.getContentResolver().query(
-				Uri.parse(calanderEventURL), new String[]{"title", "dtstart"}, "dtstart>=? and dtstart<=?", new String[]{String.valueOf(startTime), String.valueOf(endTime)}, null);
+				Uri.parse(calanderEventURL),
+				new String[] { "title", "dtstart" },
+				"dtstart>=? and dtstart<=?",
+				new String[] { String.valueOf(startTime),
+						String.valueOf(endTime) }, null);
 		StringBuffer result = new StringBuffer();
 		while (eventCursor.moveToNext()) {
 			String eventTitle = eventCursor.getString(eventCursor
@@ -131,31 +207,36 @@ public class CalendarUtils {
 			String time = TimeUtils.getTime(eventDate, sdfTime);
 			result.append(time).append(" ").append(eventTitle).append("\n");
 		}
-		
+
 		return result.toString();
 	}
-	
-	public static ArrayList<Date> queryEventDayList(Context context, int year, int month) throws Exception {
+
+	public static ArrayList<Date> queryEventDayList(Context context, int year,
+			int month) throws Exception {
 		Calendar mCalendar = Calendar.getInstance();
-		mCalendar.set(year, month-1, 1);
+		mCalendar.set(year, month - 1, 1);
 		mCalendar.set(Calendar.HOUR_OF_DAY, 00);
 		mCalendar.set(Calendar.MINUTE, 00);
 		mCalendar.set(Calendar.SECOND, 00);
 		long startTime = mCalendar.getTimeInMillis();
-		mCalendar.set(year, month-1, 31);
+		mCalendar.set(year, month - 1, 31);
 		mCalendar.set(Calendar.HOUR_OF_DAY, 23);
 		mCalendar.set(Calendar.MINUTE, 59);
 		mCalendar.set(Calendar.SECOND, 59);
 		long endTime = mCalendar.getTimeInMillis();
 		Cursor eventCursor = context.getContentResolver().query(
-				Uri.parse(calanderEventURL), new String[]{"title", "dtstart"}, "dtstart>=? and dtstart<=?", new String[]{String.valueOf(startTime), String.valueOf(endTime)}, null);
-		ArrayList<Date> resultList= new ArrayList<Date>();
+				Uri.parse(calanderEventURL),
+				new String[] { "title", "dtstart" },
+				"dtstart>=? and dtstart<=?",
+				new String[] { String.valueOf(startTime),
+						String.valueOf(endTime) }, null);
+		ArrayList<Date> resultList = new ArrayList<Date>();
 		while (eventCursor.moveToNext()) {
 			Long eventDate = eventCursor.getLong(eventCursor
 					.getColumnIndex("dtstart"));
 			resultList.add(new Date(eventDate));
 		}
-		
+
 		return resultList;
 	}
 }

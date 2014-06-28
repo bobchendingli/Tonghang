@@ -20,25 +20,18 @@ import com.joanzapata.pdfview.listener.OnPageChangeListener;
 public class PDFViewActivity extends SherlockActivity implements
 		OnPageChangeListener, OnClickListener {
 
-	public static final String SAMPLE_FILE = "sample.pdf";
-
-	public static final String ABOUT_FILE = "about.pdf";
-
-	private Button btn_title_left, btn_title_right;
+	private Button btn_title_left;
+	private Button btn_title_right;
 	private TextView tv_top_title;
+	private TextView tv_page;
+	private PDFView pdfView;
+	private Integer pageNumber = 1;
 
-	PDFView pdfView;
-
-	String pdfName = SAMPLE_FILE;
-
-	Integer pageNumber = 1;
-	
 	private String title;
 	private String path;
-	
+
 	public static Intent newIntent() {
-		return new Intent(GlobalContext.getInstance(),
-				PDFViewActivity.class);
+		return new Intent(GlobalContext.getInstance(), PDFViewActivity.class);
 	}
 
 	public static Intent newIntent(String title, String path) {
@@ -48,14 +41,14 @@ public class PDFViewActivity extends SherlockActivity implements
 		intent.putExtra("path", path);
 		return intent;
 	}
-	
+
 	@Override
 	protected void onSaveInstanceState(Bundle outState) {
 		super.onSaveInstanceState(outState);
 		outState.putString("title", title);
 		outState.putString("path", path);
 	}
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -69,15 +62,16 @@ public class PDFViewActivity extends SherlockActivity implements
 		}
 		setContentView(R.layout.pdf_view);
 		pdfView = (PDFView) findViewById(R.id.pdfView);
+		tv_page = (TextView) findViewById(R.id.tv_page);
 		tv_top_title = (TextView) findViewById(R.id.tv_top_title);
-		tv_top_title.setText("我的信息");
+		tv_top_title.setText(title);
 		btn_title_left = (Button) findViewById(R.id.btn_title_left);
 		btn_title_left.setText("返回");
 		btn_title_left.setOnClickListener(this);
 		btn_title_right = (Button) findViewById(R.id.btn_title_right);
-		btn_title_right.setVisibility(View.GONE);
-
-		display(pdfName, false);
+		btn_title_right.setVisibility(View.INVISIBLE);
+		if (path != null)
+			display(path, false);
 	}
 
 	private void display(String fileName, boolean jumpToFirstPage) {
@@ -93,7 +87,7 @@ public class PDFViewActivity extends SherlockActivity implements
 	@Override
 	public void onPageChanged(int page, int pageCount) {
 		pageNumber = page;
-		setTitle(format("%s / %s", page, pageCount));
+		tv_page.setText((format("%s / %s", page, pageCount)));
 	}
 
 	@Override

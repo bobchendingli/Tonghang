@@ -75,11 +75,11 @@ public class LoginActivity extends Activity implements OnClickListener {
 //		}
 		
 		userBean = SettingUtility.getDefaultUserBean();
-		userBean = new UserBean();
-		userBean.setUserid("106");
-		userBean.setUsername("bb");
-		userBean.setMail("11@qq");
-		SettingUtility.setDefaultUserBean(userBean);
+//		userBean = new UserBean();
+//		userBean.setUserid("106");
+//		userBean.setUsername("bb");
+//		userBean.setMail("11@qq");
+//		SettingUtility.setDefaultUserBean(userBean);
 		if(userBean != null && !TextUtils.isEmpty(userBean.getUserid())) {
 			GlobalContext.getInstance().setUserBean(userBean);
 			jumpMainActivity();
