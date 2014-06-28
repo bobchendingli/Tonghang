@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.csb"
-    android:versionCode="2"
-    android:versionName="1.6" >
+    android:versionCode="3"
+    android:versionName="1.7" >
 
     <uses-sdk android:minSdkVersion="8" />
     
@@ -131,6 +131,24 @@
         </activity>
         <activity
             android:name="com.csb.ui.setting.MyInfoActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.NoTitle"
+            android:windowSoftInputMode="stateAlwaysHidden" >
+        </activity>
+        <activity
+            android:name="com.csb.ui.setting.MyCalendarActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.NoTitle"
+            android:windowSoftInputMode="stateAlwaysHidden" >
+        </activity>
+        <activity
+            android:name="com.csb.ui.setting.AddRemindEventActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.NoTitle"
+            android:windowSoftInputMode="stateAlwaysHidden" >
+        </activity>
+        <activity
+            android:name="com.csb.ui.meeting.PDFViewActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.NoTitle"
             android:windowSoftInputMode="stateAlwaysHidden" >

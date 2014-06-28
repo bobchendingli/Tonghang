@@ -41,6 +41,7 @@ import com.csb.dao.URLHelper;
 import com.csb.support.lib.MyAsyncTask;
 import com.csb.support.settinghelper.SettingUtility;
 import com.csb.ui.login.LoginActivity;
+import com.csb.ui.setting.MyCalendarActivity;
 import com.csb.ui.setting.MyInfoActivity;
 import com.csb.ui.setting.SettingsActivity;
 import com.csb.ui.task.UploadPicAsyncTask;
@@ -294,14 +295,19 @@ public class RightSlidingMenuFragment extends Fragment implements
 		}
 	}
 
-	private void doMyCalendarEvent() {
+	protected void doMyCalendarEvent() {
+		Intent i = new Intent(getActivity(), MyCalendarActivity.class);
+		startActivity(i);
+	}
+	
+	protected void doSystemCalendarEvent() {
 		try {
 			Intent i = new Intent();
 			ComponentName cn = null;
 			if (Integer.parseInt(Build.VERSION.SDK) >= 8) {
 				cn = new ComponentName("com.android.calendar",
 						"com.android.calendar.LaunchActivity");
-
+				
 			} else {
 				cn = new ComponentName("com.google.android.calendar",
 						"com.android.calendar.LaunchActivity");

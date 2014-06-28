@@ -20,7 +20,6 @@ import com.csb.bean.UserBean;
 import com.csb.support.lib.MyAsyncTask;
 import com.csb.support.settinghelper.SettingUtility;
 import com.csb.ui.main.MainActivity;
-import com.csb.ui.setting.SettingsActivity;
 import com.csb.ui.task.LoginAsyncTask;
 import com.csb.utils.BundleArgsConstants;
 import com.csb.utils.ClassPathResource;
@@ -76,10 +75,16 @@ public class LoginActivity extends Activity implements OnClickListener {
 //		}
 		
 		userBean = SettingUtility.getDefaultUserBean();
+		userBean = new UserBean();
+		userBean.setUserid("106");
+		userBean.setUsername("bb");
+		userBean.setMail("11@qq");
+		SettingUtility.setDefaultUserBean(userBean);
 		if(userBean != null && !TextUtils.isEmpty(userBean.getUserid())) {
 			GlobalContext.getInstance().setUserBean(userBean);
 			jumpMainActivity();
 		}
+		
 		setContentView(R.layout.login);
 		initView();
 	}
@@ -208,7 +213,7 @@ public class LoginActivity extends Activity implements OnClickListener {
 	}
 
 	private void jumpMainActivity() {
-		Intent i = new Intent(LoginActivity.this, MainActivity.class);
+		Intent i = new Intent(LoginActivity.this, com.csb.ui.main.MainActivity.class);
 		startActivity(i);
 		this.finish();
 		return;

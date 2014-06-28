@@ -114,7 +114,7 @@ public class MeetingDownloadListActivity extends Activity implements
 					int position, long id) {
 				Intent intent = new Intent(context,
 						MeetingDownloadDetailActivity.class);
-				FileBean fileBean = listItems.get(position);
+				final FileBean fileBean = listItems.get(position);
 				
 				
 
@@ -141,7 +141,8 @@ public class MeetingDownloadListActivity extends Activity implements
 								fileBean);
 						startActivity(intent);
 					} else if (Constants.PDF.equalsIgnoreCase(extName)) {
-						startActivity(IntentUtils.getPdfFileIntent(path));
+						startActivity(PDFViewActivity.newIntent(fileBean.getTitle(), path));
+//						startActivity(IntentUtils.getPdfFileIntent(path));
 					} else if (Constants.PIC_LIST.contains(extName)) {
 						intent.putExtra(BundleArgsConstants.FILEBEAN_EXTRA,
 								fileBean);

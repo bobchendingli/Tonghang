@@ -109,8 +109,8 @@ public class SettingsActivity extends Activity implements OnClickListener {
 	public void doShare() {
 		Intent intent=new Intent(Intent.ACTION_SEND); 
 		intent.setType("image/*"); 
-		intent.putExtra(Intent.EXTRA_SUBJECT, "分享"); 
-		intent.putExtra(Intent.EXTRA_TEXT, "同行网开通了!!!");  
+		intent.putExtra(Intent.EXTRA_SUBJECT, "我已经安装同行网了，希望你和你的同行也一块加入吧！"); 
+		intent.putExtra(Intent.EXTRA_TEXT, "我已经安装同行网了，希望你和你的同行也一块加入吧！");  
 		intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK); 
 		startActivity(Intent.createChooser(intent, getTitle())); 
 	}

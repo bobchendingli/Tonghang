@@ -370,7 +370,7 @@ public class RegisterConfirmActivity extends Activity implements
 
 	private AlertDialog postDialog;
 	private static final String[] zyzcArr = { "主任医师", "副主任医师", "主治医师", "住院医师" };
-	private static final String[] jzArr = { "教授", "副教授", "讲师", "助教" };
+	private static final String[] jzArr = { "无", "教授", "副教授", "讲师", "助教" };
 	private String mZyzc;
 	private String mJz;
 
