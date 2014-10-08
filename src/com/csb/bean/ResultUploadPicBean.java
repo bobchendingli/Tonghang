@@ -7,8 +7,6 @@ import android.os.Parcelable;
  * 返回结果 { “respCode”:”0000”, “respMsg“:“上传医师执照成功“
  * “imageurl”:”27_100000_license.png” }
  * 
- * 
- * 
  * @author bobo
  */
 public class ResultUploadPicBean implements Parcelable {
@@ -42,8 +40,8 @@ public class ResultUploadPicBean implements Parcelable {
 
 	@Override
 	public String toString() {
-		return "ResultUploadPicBean [respCode=" + respCode + ", respMsg=" + respMsg
-				+ ", imageurl=" + imageurl + "]";
+		return "ResultUploadPicBean [respCode=" + respCode + ", respMsg="
+				+ respMsg + ", imageurl=" + imageurl + "]";
 	}
 
 	@Override

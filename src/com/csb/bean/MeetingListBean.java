@@ -6,7 +6,6 @@ import java.util.List;
 /**
  * 返回结果 { “respCode”:”0000”, “respMsg“:“注册成功“ “userid”:”DE56756TYGH” }
  * 
- * 
  * @author bobo
  */
 public class MeetingListBean  {

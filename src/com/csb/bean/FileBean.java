@@ -4,7 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 /**
- * 
+ * 下载文件
  * 
  * @author bobo
  */
